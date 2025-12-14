@@ -1,25 +1,25 @@
 ---
-description: "Practice test-driven development (write tests first)"
+description: "Strictly follow Test-Driven Development (Red-Green) with atomic commits."
 alwaysApply: true
 ---
 
 # TDD Rule
 
-Use test-driven development for all new or changed behavior in source code.
+You MUST follow strict Test-Driven Development (Red-Green) for all changes.
 
-Process:
-1. For any new feature or bug fix, first write or update a test that specifies the desired behavior.
-2. Confirm the test fails for the expected reason before modifying production code.
-3. Implement the smallest change that makes the test pass.
-4. Refactor for clarity, design, or performance while keeping the full test suite passing.
-5. Repeat in small, behavior‑focused steps; avoid large untested changes.
+## Protocol
 
-When working in a git repo, make the phases obvious:
+1.  **RED**: Write a failing test case that defines the desired behavior.
+    -   Do NOT touch production code yet.
+    -   **COMMIT 1**: Commit ONLY the test file(s). Message: "test: <description>"
 
-- For any behavior change, produce **exactly two commits**:
-  - Commit 1: tests only (no production changes); tests should fail.
-  - Commit 2: implementation; tests should pass.
+2.  **GREEN**: Implement the minimal code to pass the test.
+    -   **COMMIT 2**: Commit the implementation. Message: "feat: <description>"
 
-If you cannot follow the two-commit structure, explicitly explain why in the PR/summary.
+## Enforcement
 
-Tests should be specific, deterministic, and clearly name the behavior they protect. If required behavior cannot be expressed as a test, clarify requirements before coding.
+-   **NEVER** skip the RED commit.
+-   **NEVER** combine tests and implementation in a single commit.
+-   **NEVER** modify production code without a pre-existing failing test.
+
+If you fail to produce exactly two commits (Red, then Green), you are in violation of this rule.
